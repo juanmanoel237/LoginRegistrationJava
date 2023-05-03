@@ -88,7 +88,7 @@ public class RegistrationForm extends JDialog {
 
         try{
             Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-            // Connected to database successfully...
+            // Connexion à la base de données réussie...
 
             Statement stmt = conn.createStatement();
             String sql = "INSERT INTO users (name, email, phone, address, password) " +
@@ -100,7 +100,7 @@ public class RegistrationForm extends JDialog {
             preparedStatement.setString(4, address);
             preparedStatement.setString(5, password);
 
-            //Insert row into the table
+            //Insérer une ligne dans le tableau
             int addedRows = preparedStatement.executeUpdate();
             if (addedRows > 0) {
                 user = new User();

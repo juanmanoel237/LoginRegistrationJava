@@ -21,7 +21,7 @@ public class DashboardForm extends JFrame {
 
         boolean hasRegistredUsers = connectToDatabase();
         if (hasRegistredUsers) {
-            //show Login form
+            //Afficher formulaire de login
             LoginForm loginForm = new LoginForm(this);
             User user = loginForm.user;
 
@@ -35,7 +35,7 @@ public class DashboardForm extends JFrame {
             }
         }
         else {
-            //show Registration form
+            //Afficher le register form
             RegistrationForm registrationForm = new RegistrationForm(this);
             User user = registrationForm.user;
 
@@ -73,14 +73,14 @@ public class DashboardForm extends JFrame {
         final String PASSWORD = "";
 
         try{
-            //First, connect to MYSQL server and create the database if not created
+            //Tout d'abord, connectez-vous au serveur MYSQL et créez la base de données si elle n'est pas créée
             Connection conn = DriverManager.getConnection(MYSQL_SERVER_URL, USERNAME, PASSWORD);
             Statement statement = conn.createStatement();
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS MyStore");
             statement.close();
             conn.close();
 
-            //Second, connect to the database and create the table "users" if cot created
+            //Deuxièmement, connectez-vous à la base de données et créez la table "utilisateurs" si cot créé
             conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
             statement = conn.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS users ("
@@ -93,7 +93,7 @@ public class DashboardForm extends JFrame {
                     + ")";
             statement.executeUpdate(sql);
 
-            //check if we have users in the table users
+            //vérifier si nous avons des utilisateurs dans la table des utilisateurs
             statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM users");
 
